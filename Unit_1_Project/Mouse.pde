@@ -12,3 +12,19 @@ void mousePressed() {
 
 void mouseReleased() {
 }
+
+void mainmenuClicks() {
+  MODE = INTRO; 
+}
+
+void introClicks() {
+  MODE = GAME; 
+}
+
+void gameClicks() {
+  MODE = GAMEOVER; 
+}
+
+void gameoverClicks() {
+  MODE = MAINMENU; 
+}
