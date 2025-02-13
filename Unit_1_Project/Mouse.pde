@@ -14,17 +14,19 @@ void mouseReleased() {
 }
 
 void mainmenuClicks() {
-  MODE = INTRO; 
+  if (mouseX > width/2+width/7 && mouseX < width/2+width/7+width/4 && mouseY > height/2+height/4 && mouseY < height/2+height/4+height/8) {
+    MODE = INTRO;
+  }
 }
 
 void introClicks() {
-  MODE = GAME; 
+  MODE = GAME;
 }
 
 void gameClicks() {
-  MODE = GAMEOVER; 
+  MODE = GAMEOVER;
 }
 
 void gameoverClicks() {
-  MODE = MAINMENU; 
+  MODE = MAINMENU;
 }
