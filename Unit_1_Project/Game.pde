@@ -6,11 +6,11 @@ void game() {
   background(lightgrey);
 
   backcourt();
-  puck();
   net(0, height/3, 50, height/3, 1);
   net(width-50, height/3, 50, height/3, 2);
   paddle(1);
   paddle(2);
+  puck();
 
   //move paddle 1
   if (wKey == true) p1y = p1y - v1y;
@@ -35,6 +35,49 @@ void game() {
     v2x = min(v2x, 12);
     v2y = min(v2y, 12);
   }
+
+  //collision
+  paddle1dist = dist(p1x, p1y, x, y);
+  paddle2dist = dist(p2x, p2y, x, y);
+
+  if (x < 0 + d/2 || x > width - d/2) vx = -vx;
+  if (x < 0 + d/2) {
+    x = d/2;
+  } else if (x > width - d/2) {
+    x = width - d/2;
+  }
+  if (y < 0 + d/2 || y > height - d/2) vy = -vy;
+  if (y < 0 + d/2) {
+    y = d/2;
+  } else if (y > height - d/2) {
+    y = height - d/2;
+  }
+
+  if (paddle1dist <= d) {
+    vx = (x - p1x)/10;
+    vy = (y - p1y)/10;
+  }
+  if (paddle2dist <= d) {
+    vx = (x - p2x)/10;
+    vy = (y - p2y)/10;
+  }
+
+  //paddle 1 restrictions
+  if (p1x < 5*d/3) p1x = 5*d/3;
+  if (p1x > width/2 - d/2) p1x = width/2 - d/2;
+  if (p1y < d/2) p1y = d/2;
+  if (p1y > height - d/2) p1y = height - d/2;
+
+  //paddle 2 restrictions
+  if (p2x < width/2 + d/2) p2x = width/2 + d/2;
+  if (p2x > width - 5*d/3) p2x = width - 5*d/3;
+  if (p2y < d/2) p2y = d/2;
+  if (p2y > height - d/2) p2y = height - d/2;
+
+  //friction
+  vx = vx*0.995;
+  vy = vy*0.995;
   
-  //collision 
+  //scores
+  scoreboard(); 
 }

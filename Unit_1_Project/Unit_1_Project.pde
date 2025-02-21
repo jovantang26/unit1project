@@ -27,9 +27,9 @@ color indigo = #4b0082;
 color violet = #7f00ff;
 
 //puck
-float x, y, d;
+float x, y, d; //d is for both puck and paddle diameter
 float vx, vy;
-float r;
+float r; //rotation
 
 //paddle 1
 float p1x, p1y;
@@ -42,6 +42,12 @@ float v2x, v2y;
 //keyboard
 boolean wKey, aKey, sKey, dKey, upKey, downKey, leftKey, rightKey; 
 
+//collision
+float paddle1r, paddle2r, puckr;
+float paddle1dist, paddle2dist;  
+
+//score
+int timer, p1score, p2score;
 
 void setup() {
   size(1800, 900); //900, 450
@@ -138,14 +144,18 @@ void paddle(int player) {
   }
   fill(outerRing);
   if (player == 1) {
-    circle(p1x, p1y, 200);
+    circle(p1x, p1y, d);
   } else {
-    circle(p2x, p2y, 200);
+    circle(p2x, p2y, d);
   }
   fill(innerRing);
   if (player == 1) {
     circle(p1x, p1y, 75);
   } else {
     circle(p2x, p2y, 75);
+  }
+  
+  void scoreboard() {
+    
   }
 }
