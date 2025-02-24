@@ -10,6 +10,7 @@ int MODE;
 final int MAINMENU = 0;
 final int INTRO = 1;
 final int GAME = 2;
+final int ROUNDOVER = 3; 
 final int GAMEOVER = 4;
 
 color black = #000000;
@@ -40,11 +41,11 @@ float p2x, p2y;
 float v2x, v2y;
 
 //keyboard
-boolean wKey, aKey, sKey, dKey, upKey, downKey, leftKey, rightKey; 
+boolean wKey, aKey, sKey, dKey, upKey, downKey, leftKey, rightKey;
 
 //collision
 float paddle1r, paddle2r, puckr;
-float paddle1dist, paddle2dist;  
+float paddle1dist, paddle2dist;
 
 //score
 int timer, p1score, p2score;
@@ -56,8 +57,8 @@ void setup() {
   //puck
   x = int(random(width/6, width/3));
   y = int(random(height*1/3, height*3/4));
-  vx = 5; 
-  vy = 5; 
+  vx = 5;
+  vy = 5;
   d = 200;
 
   //paddle 1
@@ -71,6 +72,10 @@ void setup() {
   p2y = height/2;
   v2x = 5;
   v2y = 5;
+  
+  //score 
+  p1score = 0; 
+  p2score = 0; 
 }
 
 void draw() {
@@ -80,6 +85,8 @@ void draw() {
     intro();
   } else if (MODE == GAME) {
     game();
+  } else if (MODE == ROUNDOVER) {
+    roundover(); 
   } else {
     gameover();
   }
@@ -154,8 +161,12 @@ void paddle(int player) {
   } else {
     circle(p2x, p2y, 75);
   }
-  
-  void scoreboard() {
-    
-  }
+}
+
+void scoreboard() {
+  textAlign(CENTER);
+  fill(black); 
+  textSize(125); 
+  text("" + p1score, 50, 100);
+  text("" + p2score, width - 50, 100);
 }

@@ -77,7 +77,27 @@ void game() {
   //friction
   vx = vx*0.995;
   vy = vy*0.995;
-  
+
   //scores
-  scoreboard(); 
+  scoreboard();
+  if (x >= width - d/2 - 10 && y <= height/2 + height/8 && y >= height/2 - height/8) {
+    goal(1);
+  }
+  if (x <= d/2 + 10 && y <= height/2 + height/8 && y >= height/2 - height/8) {
+    goal(2);
+  }
+}
+
+void goal(int player) {
+  if (player == 1) {
+    fill(violet);
+    p1score++;
+  } else {
+    fill(green);
+    p2score++;
+  }
+  textAlign(CENTER);
+  textSize(172);
+  text("GOAL!", width/2, height/2);
+  MODE = ROUNDOVER;
 }
