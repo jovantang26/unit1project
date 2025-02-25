@@ -48,7 +48,8 @@ float paddle1r, paddle2r, puckr;
 float paddle1dist, paddle2dist;
 
 //score
-int timer, p1score, p2score;
+int timer, introtimer, transitiontimer; 
+int p1score, p2score;
 
 void setup() {
   size(1800, 900); //900, 450
@@ -76,6 +77,11 @@ void setup() {
   //score 
   p1score = 0; 
   p2score = 0; 
+  
+  //timer
+  timer = 100; 
+  introtimer = 100; 
+  transitiontimer = 200; 
 }
 
 void draw() {
@@ -90,6 +96,7 @@ void draw() {
   } else {
     gameover();
   }
+   println("" + MODE);
 }
 
 //global functions

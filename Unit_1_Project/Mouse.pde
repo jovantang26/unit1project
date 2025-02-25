@@ -5,6 +5,8 @@ void mousePressed() {
     introClicks();
   } else if (MODE == GAME) {
     gameClicks();
+  } else if (MODE == ROUNDOVER) {
+    roundoverClicks(); 
   } else {
     gameoverClicks();
   }
@@ -24,7 +26,11 @@ void introClicks() {
 }
 
 void gameClicks() {
-  MODE = GAMEOVER;
+  MODE = ROUNDOVER;
+}
+
+void roundoverClicks() {
+  MODE = GAMEOVER; 
 }
 
 void gameoverClicks() {

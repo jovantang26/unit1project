@@ -1,7 +1,12 @@
 void game() {
-  x = x + vx;
-  y = y + vy;
-  r = r + 0.05; //reminder: set the puck to spin first for a a few seconds before moving
+  transitiontimer = 100;
+  timer--;
+
+  if (timer < 0) {
+    x = x + vx;
+    y = y + vy;
+    r = r + 0.05;
+  }
 
   background(lightgrey);
 
@@ -98,6 +103,16 @@ void goal(int player) {
   }
   textAlign(CENTER);
   textSize(172);
-  text("GOAL!", width/2, height/2);
-  MODE = ROUNDOVER;
+  if (p1score == 2) {
+    text("PLAYER 1 WINS", width/2, height/2); //unknown syntax error, unsolvable, ask mr p tmr
+    transitiontimer--; 
+    if (transitiontimer < 0) MODE = GAMEOVER; 
+  } else if (p2score == 2) {
+    text("PLAYER 2 WINS", width/2, height/2);
+    transitiontimer--; 
+    if (transitiontimer < 0) MODE = GAMEOVER; 
+  } else {
+    text("GOAL!", width/2, height/2);
+    MODE = ROUNDOVER;
+  }
 }
