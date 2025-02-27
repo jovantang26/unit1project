@@ -104,13 +104,13 @@ void goal(int player) {
   textAlign(CENTER);
   textSize(172);
   if (p1score == 2) {
-    text("PLAYER 1 WINS", width/2, height/2); //unknown syntax error, unsolvable, ask mr p tmr
-    transitiontimer--; 
-    if (transitiontimer < 0) MODE = GAMEOVER; 
+    winner = 1;
+    MODE = GAMEOVER;
+    timer = 250;
   } else if (p2score == 2) {
-    text("PLAYER 2 WINS", width/2, height/2);
-    transitiontimer--; 
-    if (transitiontimer < 0) MODE = GAMEOVER; 
+    winner = 2;
+    MODE = GAMEOVER;
+    timer = 250;
   } else {
     text("GOAL!", width/2, height/2);
     MODE = ROUNDOVER;

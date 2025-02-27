@@ -10,7 +10,7 @@ int MODE;
 final int MAINMENU = 0;
 final int INTRO = 1;
 final int GAME = 2;
-final int ROUNDOVER = 3; 
+final int ROUNDOVER = 3;
 final int GAMEOVER = 4;
 
 color black = #000000;
@@ -48,8 +48,13 @@ float paddle1r, paddle2r, puckr;
 float paddle1dist, paddle2dist;
 
 //score
-int timer, introtimer, transitiontimer; 
-int p1score, p2score;
+int timer, introtimer, transitiontimer;
+int p1score, p2score, winner;
+
+//gif 
+PImage[] gif; 
+int numFrames; 
+int f; 
 
 void setup() {
   size(1800, 900); //900, 450
@@ -73,15 +78,26 @@ void setup() {
   p2y = height/2;
   v2x = 5;
   v2y = 5;
-  
-  //score 
-  p1score = 0; 
-  p2score = 0; 
-  
+
+  //score
+  p1score = 0;
+  p2score = 0;
+
   //timer
-  timer = 100; 
-  introtimer = 100; 
-  transitiontimer = 200; 
+  timer = 100;
+  introtimer = 100;
+  transitiontimer = 200;
+  
+  //gif
+  numFrames = 27; 
+  gif = new PImage [numFrames]; 
+  
+  int n = 0; 
+  while (n < numFrames) {
+    if (n < 10) gif[n] = loadImage("frame_0"+ n +"_delay-0.1s");
+    else gif[n] = loadImage("frame_"+ n +"_delay-0.1s"); 
+    n++; 
+  }
 }
 
 void draw() {
@@ -92,11 +108,11 @@ void draw() {
   } else if (MODE == GAME) {
     game();
   } else if (MODE == ROUNDOVER) {
-    roundover(); 
+    roundover();
   } else {
     gameover();
   }
-   println("" + MODE);
+  println("" + MODE);
 }
 
 //global functions
@@ -172,8 +188,8 @@ void paddle(int player) {
 
 void scoreboard() {
   textAlign(CENTER);
-  fill(black); 
-  textSize(125); 
+  fill(black);
+  textSize(125);
   text("" + p1score, 50, 100);
   text("" + p2score, width - 50, 100);
 }

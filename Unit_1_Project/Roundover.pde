@@ -1,6 +1,6 @@
 void roundover() {
   //reset
-  vx = 5; //ask mr p is its possible to set vx and vy to 5 or -5
+  vx = 5;
   vy = 5;
   r = 0;
   v1x = 0;
@@ -16,7 +16,9 @@ void roundover() {
   p2y = height/2;
 
   timer = 100;
+    
   transitiontimer--;
   if (transitiontimer < 0) {
     MODE = GAME;
+  }
 }
