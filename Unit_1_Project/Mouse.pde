@@ -1,13 +1,13 @@
 void mousePressed() {
   if (MODE == MAINMENU) {
     mainmenuClicks();
-  } else if (MODE == INTRO) {
-    introClicks();
-  } else if (MODE == GAME) {
-    gameClicks();
-  } else if (MODE == ROUNDOVER) {
-    roundoverClicks();
-  } else {
+  //} else if (MODE == INTRO) {
+  //  introClicks();
+  //} else if (MODE == GAME) {
+  //  gameClicks();
+  //} else if (MODE == ROUNDOVER) {
+  //  roundoverClicks();
+  } else if (MODE == GAMEOVER) {
     gameoverClicks();
   }
 }
@@ -35,4 +35,5 @@ void roundoverClicks() {
 
 void gameoverClicks() {
   MODE = MAINMENU;
+  reset();
 }

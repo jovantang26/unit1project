@@ -16,7 +16,7 @@ void roundover() {
   p2y = height/2;
 
   timer = 100;
-    
+
   transitiontimer--;
   if (transitiontimer < 0) {
     MODE = GAME;

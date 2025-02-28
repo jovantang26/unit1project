@@ -4,6 +4,16 @@
 //Unit 1 Project
 //Ice Hockey - 2 Player Game
 
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
+
+Minim minim;
+AudioPlayer theme; 
+
 PFont gameFont;
 
 int MODE;
@@ -89,15 +99,20 @@ void setup() {
   transitiontimer = 200;
   
   //gif
+  f = 0; 
   numFrames = 27; 
   gif = new PImage [numFrames]; 
   
   int n = 0; 
   while (n < numFrames) {
-    if (n < 10) gif[n] = loadImage("frame_0"+ n +"_delay-0.1s");
-    else gif[n] = loadImage("frame_"+ n +"_delay-0.1s"); 
+    if (n < 10) gif[n] = loadImage("frame_0"+ n +"_delay-0.1s.gif");
+    else gif[n] = loadImage("frame_"+ n +"_delay-0.1s.gif"); 
     n++; 
   }
+  
+   minim = new Minim(this);
+  theme = minim.loadFile("Naktigonis - To Sleep, Dreaming (Contour 3) (Deepwoken OST).mp3");
+  theme.loop();
 }
 
 void draw() {
